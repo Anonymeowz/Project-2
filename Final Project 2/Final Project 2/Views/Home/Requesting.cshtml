@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "Friend Requests";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<h3>Incoming Requests</h3>
+
+@{bool IsRequested = false;
+    if (IsRequested)
+    {
+    }
+    else
+    {
+        <p>You have no incoming friend requests</p>
+    }
+
+}
+<br />
+
+<h3>Outgoing Requests</h3>
+
+@{bool HasRequested = false;
+    if (HasRequested)
+    {
+    }
+    else
+    {
+        <p>You have no outgoing friend requests</p>
+    }
+
+}
+<br />

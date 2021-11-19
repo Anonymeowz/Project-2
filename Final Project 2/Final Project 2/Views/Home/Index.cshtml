@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Final_Project_2.Models.DisplayClass>
+@{
+    ViewBag.Title = "Your Images";
+    WebGrid grid = new WebGrid(Model, rowsPerPage: 5);
+}
+
+<center>
+    <h1>Your Images</h1>
+    <hr />
+    @grid.GetHtml(
+        mode:WebGridPagerModes.All,
+        firstText: "<< First",
+        previousText: "< Previous",
+        nextText: "Next >",
+        lastText: "Last >>",
+        columns: new[]
+        {
+            grid.Column("Image"),
+            grid.Column("Name"),
+            grid.Column("Geolocation"),
+            grid.Column("Description")
+        })
+</center>

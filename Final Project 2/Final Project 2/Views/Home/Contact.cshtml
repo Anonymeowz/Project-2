@@ -1,0 +1,20 @@
+﻿@model IEnumerable<Final_Project_2.Models.FriendClass>
+@{
+    ViewBag.Title = "Friends";
+    WebGrid grid = new WebGrid(Model, rowsPerPage: 5);
+}
+
+<center>
+    <h1>Your Friends</h1>
+    <hr />
+    @grid.GetHtml(
+        mode:WebGridPagerModes.All,
+        firstText: "<< First",
+        previousText: "< Previous",
+        nextText: "Next >",
+        lastText: "Last >>",
+        columns: new[]
+        {
+            grid.Column("Friend Username"),
+        })
+</center>
