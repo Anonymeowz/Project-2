@@ -1,34 +1,37 @@
-﻿
+﻿@model IEnumerable<Final_Project_2.Models.Request>
+
 @{
     ViewBag.Title = "Friend Requests";
+    WebGrid grid = new WebGrid(Model, rowsPerPage: 5);
 }
 
 <h2>@ViewBag.Title</h2>
 
-<h3>Incoming Requests</h3>
-
-@{bool IsRequested = false;
-    if (IsRequested)
+<br />
+@{
+    if (grid.Rows.Count == 0)
     {
+        <h4>You have no incoming friend requests</h4>
     }
     else
     {
-        <p>You have no incoming friend requests</p>
+        <center>
+            <h1>Incoming Requests</h1>
+            <hr />
+            @grid.GetHtml(
+                mode: WebGridPagerModes.All,
+                firstText: "<< First",
+                previousText: "< Previous",
+                nextText: "Next >",
+                lastText: "Last >>",
+                columns: new[]
+                {
+                    grid.Column("Image"),
+                    grid.Column("Name"),
+                    grid.Column("Geolocation"),
+                    grid.Column("Description")
+                })
+        </center>
+        <br />
     }
-
 }
-<br />
-
-<h3>Outgoing Requests</h3>
-
-@{bool HasRequested = false;
-    if (HasRequested)
-    {
-    }
-    else
-    {
-        <p>You have no outgoing friend requests</p>
-    }
-
-}
-<br />

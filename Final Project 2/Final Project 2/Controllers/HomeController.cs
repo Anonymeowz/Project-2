@@ -84,8 +84,30 @@ namespace Final_Project_2.Controllers
         [Authorize]
         public ActionResult Requesting()
         {
-            return View();
-        }
+            string mainconn = ConfigurationManager.ConnectionStrings["Mycon"].ConnectionString;
+            SqlConnection sqlconn = new SqlConnection(mainconn);
+            string sqlquery = "SELECT * FROM [dbo].[Request]";
+            SqlCommand sqlcomm = new SqlCommand(sqlquery, sqlconn);
+            sqlconn.Open();
+            SqlDataAdapter sda = new SqlDataAdapter(sqlcomm);
+            DataSet ds = new DataSet();
+            sda.Fill(ds);
+            List<Request> list = new List<Request>();
 
+            foreach (DataRow data in ds.Tables[0].Rows)
+            {
+                if (User.Identity.GetUserName() == Convert.ToString(data["Username"]))
+                {
+                    list.Add(new Request
+                    {
+                        Friendname = Convert.ToString(data["Friendname"])
+                    });
+                }
+            }
+            sqlconn.Close();
+
+
+            return View(list);
+        }
     }
 }
