@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitemanifest>
+  <IisApp path="D:\Work\Year 3\Sem 2\CMPG 323\P2\New\Final Project 2\Final Project 2\obj\Release\Package\PackageTmp" />
+  <setAcl path="D:\Work\Year 3\Sem 2\CMPG 323\P2\New\Final Project 2\Final Project 2\obj\Release\Package\PackageTmp" setAclResourceType="Directory" />
+  <setAcl path="D:\Work\Year 3\Sem 2\CMPG 323\P2\New\Final Project 2\Final Project 2\obj\Release\Package\PackageTmp" setAclUser="anonymousAuthenticationUser" setAclResourceType="Directory" />
+</sitemanifest>

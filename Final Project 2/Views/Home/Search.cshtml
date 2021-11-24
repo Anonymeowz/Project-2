@@ -1,0 +1,47 @@
+﻿@using Microsoft.AspNet.Identity;
+@model IEnumerable<Final_Project_2.Models.AspNetUser>
+@{
+    ViewBag.Title = "Add Friends";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<br />
+<br />
+@using (Html.BeginForm("Search", "Home", FormMethod.Get))
+{
+    @Html.TextBox("searching")
+    <input type="submit" value="Search" />
+}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Add Friend</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count() == 0)
+         {
+            <tr>
+                <td colspan="2" style="color:red">
+                    NO USERNAME WAS FOUND
+                </td>
+            </tr>
+         }
+         else
+         {
+            foreach (var item in Model)
+            {
+                if (@item.UserName != User.Identity.GetUserName())
+                {
+                    <tr>
+                        <td>@item.UserName</td>
+                        <td input id="friend" value="Add Friend" class="btn btn-default"></td>
+                    </tr>
+                }
+            }
+         }
+    </tbody>
+</table>

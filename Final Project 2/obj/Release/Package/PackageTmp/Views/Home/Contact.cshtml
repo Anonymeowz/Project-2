@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Final_Project_2.Models.AspNetUser>
+@{
+    ViewBag.Title = "Your Friends";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<br />
+<br />
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Friends</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count() == 0)
+        {
+            <tr>
+                <td colspan="4" style="color:red">
+                    YOU HAVE NO FRIENDS
+                </td>
+            </tr>
+        }
+        else
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.UserName</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
