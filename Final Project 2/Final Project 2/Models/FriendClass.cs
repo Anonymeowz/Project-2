@@ -7,7 +7,7 @@ namespace Final_Project_2.Models
 {
     public class FriendClass
     {
-        public string Username { get; set; }
-        public string Friendname { get; set; }
+        public AspNetUser UserDetails { get; set; }
+        public Friend FriendDetails { get; set; }
     }
 }

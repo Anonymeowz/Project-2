@@ -1,0 +1,46 @@
+﻿@model Final_Project_2.Models.Image
+
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>View</h2>
+
+<div>
+    <h4>Image</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dd>
+            <img scr="@Url.Content(Model.ImageLink)" width="250" height="250" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImageName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageGeo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImageGeo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImageDesc)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ImageID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

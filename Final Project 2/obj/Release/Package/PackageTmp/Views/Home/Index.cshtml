@@ -1,42 +1,57 @@
-﻿@model IEnumerable<Final_Project_2.Models.Image>
+﻿@model IEnumerable<Final_Project_2.Models.MultiClass>
 @{
     ViewBag.Title = "Your Images";
 }
+@using (Html.BeginForm("Add", "Image", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
 
-<h2>@ViewBag.Title</h2>
+    <div class="form-horizontal">
+        <h2>@ViewBag.Title</h2>
+        <hr />
+        @Html.ValidationSummary(true)
 
-<br />
-<br />
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Image</th>
-            <th>Name</th>
-            <th>Geolocation</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        @if (Model.Count() == 0)
-        {
-            <tr>
-                <td colspan="4" style="color:red">
-                    YOU HAVE NO IMAGES
-                </td>
-            </tr>
-        }
-        else
-        {
-            foreach (var item in Model)
-            {
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Upload Image" class="btn btn-default" />
+            </div>
+        </div>
+
+        <br />
+        <br />
+        <table class="table table-striped">
+            <thead>
                 <tr>
-                    <td><img src="@Url.Content(item.ImageLink)" height="100" width="100"/></td>
-                    <td>@item.ImageName</td>
-                    <td>@item.ImageGeo</td>
-                    <td>@item.ImageDesc</td>
-
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Geolocation</th>
+                    <th>Description</th>
+                    <th>Share</th>
                 </tr>
-            }
-        }
-    </tbody>
-</table>
+            </thead>
+            <tbody>
+                @if (Model.Count() == 0)
+                {
+                    <tr>
+                        <td colspan="5" style="color:red">
+                            YOU HAVE NO IMAGES
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td><img src="@Url.Content(item.ImageDetails.ImageLink)" height="100" width="100" /></td>
+                            <td>@item.ImageDetails.ImageName</td>
+                            <td>@item.ImageDetails.ImageDesc</td>
+                            <td>@item.ImageDetails.ImageGeo</td>
+                            <td input id="friend" type="submit" value="Add Friend" class="btn btn-default"></td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+}
